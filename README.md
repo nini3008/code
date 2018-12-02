@@ -1,2 +1,3 @@
 # code
-A bunch of sample code, ideas and practice
+
+Sample code, ideas and practice
