@@ -217,6 +217,10 @@ body,
 figure {
   margin: 0;
 }
+#main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 legend,
 button::-moz-focus-inner,
 input::-moz-focus-inner {
