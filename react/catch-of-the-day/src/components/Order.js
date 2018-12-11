@@ -34,7 +34,6 @@ class Order extends Component {
       <div className="order-wrap">
         <h2>Order</h2>
         <ul className="order">{orderIds.map(this.renderOrder)}</ul>
-
         <div className="total">
           Total: <strong>{formatPrice(total)}</strong>
         </div>
