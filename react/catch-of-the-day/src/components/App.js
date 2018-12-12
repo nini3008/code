@@ -14,10 +14,23 @@ class App extends Component {
 
   componentDidMount() {
     const { params } = this.props.match;
+    const localStorageRef = localStorage.getItem(
+      this.props.match.params.storeId
+    );
+    if (localStorageRef) {
+      this.setState({ order: JSON.parse(localStorageRef) });
+    }
     this.ref = base.syncState(`${params.storeId}/fishes`, {
       context: this,
       state: "fishes"
     });
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem(
+      this.props.match.params.storeId,
+      JSON.stringify(this.state.order)
+    );
   }
 
   componentWillUnmount() {
@@ -31,6 +44,18 @@ class App extends Component {
       fishes
     });
   };
+
+  updateFish = (key, updatedFish) => {
+    const fishes = { ...this.state.fishes };
+    fishes[key] = updatedFish;
+    this.setState({ fishes });
+  };
+
+  deleteFish = key => {
+    const fishes = { ...this.state.fishes };
+    fishes[key] = null;
+    this.setState({ fishes });
+  };
   loadSampleFishes = () => {
     this.setState({
       fishes: sampleFishes
@@ -43,6 +68,14 @@ class App extends Component {
     //2. either add to the order, or update the number of order
     order[key] = order[key] + 1 || 1;
     //3. call set state to update our state
+    this.setState({
+      order
+    });
+  };
+  removeFromOrder = key => {
+    //take a copy of state
+    const order = { ...this.state.order };
+    delete order[key];
     this.setState({
       order
     });
@@ -63,10 +96,17 @@ class App extends Component {
             ))}
           </ul>
         </div>
-        <Order fishes={this.state.fishes} order={this.state.order} />
+        <Order
+          fishes={this.state.fishes}
+          order={this.state.order}
+          removeFromOrder={this.removeFromOrder}
+        />
         <Inventory
           addFish={this.addFish}
+          updateFish={this.updateFish}
+          deleteFish={this.deleteFish}
           loadSampleFishes={this.loadSampleFishes}
+          fishes={this.state.fishes}
         />
       </div>
     );
