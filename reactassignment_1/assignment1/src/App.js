@@ -28,7 +28,10 @@ class App extends Component {
           <h1>Assigment One</h1>
         </header>
         <button onClick={this.nameHandlerChange}> Switch </button>
-        <UserInput handleInput={this.handleInput} />
+        <UserInput
+          handleInput={this.handleInput}
+          currentName={this.state.users.username}
+        />
         <UserOutput username={this.state.users[0].username} />
         <UserOutput username={this.state.users[1].username} />
       </div>
