@@ -1,11 +1,14 @@
 {
-	"folders": [
-		{
-			"path": "burger-app-basic"
-		},
-		{
-			"path": "DailyJs"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "burger-app-basic"
+    },
+    {
+      "path": "DailyJs"
+    },
+    {
+      "path": "http--01-starting-setup"
+    }
+  ],
+  "settings": {}
 }
