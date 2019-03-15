@@ -10,5 +10,7 @@
       "path": "http--01-starting-setup"
     }
   ],
-  "settings": {}
+  "settings": {
+    "git.ignoreLimitWarning": true
+  }
 }
