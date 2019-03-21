@@ -8,7 +8,8 @@ import "./Blog.css";
 
 class Blog extends Component {
   state = {
-    posts: []
+    posts: [],
+    selectedPostId: null
   };
   componentDidMount() {
     axios.get("https://jsonplaceholder.typicode.com/posts").then(response => {
@@ -24,15 +25,26 @@ class Blog extends Component {
       });
     });
   }
+
+  postSelected = id => {
+    this.setState({ selectedPostId: id });
+  };
   render() {
     const Posts = this.state.posts.map(post => {
-      return <Post key={post.id} title={post.title} author={post.author} />;
+      return (
+        <Post
+          key={post.id}
+          title={post.title}
+          author={post.author}
+          clicked={() => this.postSelected(post.id)}
+        />
+      );
     });
     return (
       <div>
         <section className="Posts">{Posts}</section>
         <section>
-          <FullPost />
+          <FullPost id={this.state.selectedPostId} />
         </section>
         <section>
           <NewPost />
