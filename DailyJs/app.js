@@ -2,10 +2,8 @@ $(document).ready(function() {
   let $ul = $(".ul_wrap");
   let $list = $ul.find("li");
   let content = `<li>
-  <div class="title">Critical Error
-    <button class="close-button">X</button>
-  </div>
-  <div class="message"><img src="http://www.routinebot.com/wp-content/uploads/2009/06/error.png"/>An error has occurred while trying to display an error message.</div>
+  <div class="title">Critical Error</div>
+  <div class="message">An error has occurred while trying to display an error message.</div>
   <button class="ok"> <span>OK</span></button>
 </li>`;
   let tmp = "";
@@ -21,6 +19,7 @@ $(document).ready(function() {
 
   $(document).on("click", function() {
     $ul.find("li").addClass("error");
+    $("body").addClass("pops--happening");
   });
 
   $(".error").draggable();
@@ -29,7 +28,7 @@ $(document).ready(function() {
     x = window.innerWidth / 3,
     y = window.innerHeight / 3;
 
-  $("body").on("click", ".ok, .close-button", function() {
+  $("body").on("click", ".ok", function() {
     $ul.append(error);
     $(".error")
       .last()
