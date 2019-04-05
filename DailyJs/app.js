@@ -1,47 +1,47 @@
-$(document).ready(function() {
-  let $ul = $(".ul_wrap");
-  let $list = $ul.find("li");
-  let content = `<li>
-  <div class="title">Critical Error</div>
-  <div class="message">An error has occurred while trying to display an error message.</div>
-  <button class="ok"> <span>OK</span></button>
-</li>`;
-  let tmp = "";
+// $(document).ready(function() {
+//   let $ul = $(".ul_wrap");
+//   let $list = $ul.find("li");
+//   let content = `<li>
+//   <div class="title">Critical Error</div>
+//   <div class="message">An error has occurred while trying to display an error message.</div>
+//   <button class="ok"> <span>OK</span></button>
+// </li>`;
+//   let tmp = "";
 
-  let addLiAnchorNodes = function(nodeAmount) {
-    for (var i = 0; i < nodeAmount; i++) {
-      tmp += content;
-    }
-    $ul.append(tmp);
-  };
+//   let addLiAnchorNodes = function(nodeAmount) {
+//     for (var i = 0; i < nodeAmount; i++) {
+//       tmp += content;
+//     }
+//     $ul.append(tmp);
+//   };
 
-  addLiAnchorNodes(20);
+//   addLiAnchorNodes(20);
 
-  $(document).on("click", function() {
-    $ul.find("li").addClass("error");
-    $("body").addClass("pops--happening");
-  });
+//   $(document).on("click", function() {
+//     $ul.find("li").addClass("error");
+//     $("body").addClass("pops--happening");
+//   });
 
-  $(".error").draggable();
+//   $(".error").draggable();
 
-  var error = '<li class="error">' + $ul.find("li").html() + "</li>",
-    x = window.innerWidth / 3,
-    y = window.innerHeight / 3;
+//   var error = '<li class="error">' + $ul.find("li").html() + "</li>",
+//     x = window.innerWidth / 3,
+//     y = window.innerHeight / 3;
 
-  $("body").on("click", ".ok", function() {
-    $ul.append(error);
-    $(".error")
-      .last()
-      .css({
-        top: y + "px",
-        left: x + "px"
-      })
-      .draggable();
+//   $("body").on("click", ".ok", function() {
+//     $ul.append(error);
+//     $(".error")
+//       .last()
+//       .css({
+//         top: y + "px",
+//         left: x + "px"
+//       })
+//       .draggable();
 
-    x += 8;
-    y += 8;
-  });
-});
+//     x += 8;
+//     y += 8;
+//   });
+// });
 
 // // A prototype is a property on any function created in javascript that points to an object
 // // the new keyord creates the 'Object.create and 'return' process when creating a prototype
@@ -122,3 +122,17 @@ $(document).ready(function() {
 // woman("andrea").eat();
 
 // man("nick").drinking();
+
+function Profile(gender) {
+  this.gender = gender;
+}
+
+Profile.prototype.name = function() {
+  console.log(`i am a ${this.gender}`);
+};
+
+Profile.prototype.sleep = function() {
+  console.log(`i dont sleep`);
+};
+
+const gend = new Profile("male");
