@@ -136,3 +136,6 @@ Profile.prototype.sleep = function() {
 };
 
 const gend = new Profile("male");
+
+let friends = [];
+const friendswithout = new Array();
