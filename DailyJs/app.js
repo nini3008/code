@@ -1,50 +1,5 @@
-// $(document).ready(function() {
-//   let $ul = $(".ul_wrap");
-//   let $list = $ul.find("li");
-//   let content = `<li>
-//   <div class="title">Critical Error</div>
-//   <div class="message">An error has occurred while trying to display an error message.</div>
-//   <button class="ok"> <span>OK</span></button>
-// </li>`;
-//   let tmp = "";
-
-//   let addLiAnchorNodes = function(nodeAmount) {
-//     for (var i = 0; i < nodeAmount; i++) {
-//       tmp += content;
-//     }
-//     $ul.append(tmp);
-//   };
-
-//   addLiAnchorNodes(20);
-
-//   $(document).on("click", function() {
-//     $ul.find("li").addClass("error");
-//     $("body").addClass("pops--happening");
-//   });
-
-//   $(".error").draggable();
-
-//   var error = '<li class="error">' + $ul.find("li").html() + "</li>",
-//     x = window.innerWidth / 3,
-//     y = window.innerHeight / 3;
-
-//   $("body").on("click", ".ok", function() {
-//     $ul.append(error);
-//     $(".error")
-//       .last()
-//       .css({
-//         top: y + "px",
-//         left: x + "px"
-//       })
-//       .draggable();
-
-//     x += 8;
-//     y += 8;
-//   });
-// });
-
-// // A prototype is a property on any function created in javascript that points to an object
-// // the new keyord creates the 'Object.create and 'return' process when creating a prototype
+//  A prototype is a property on any function created in javascript that points to an object
+//  the new keyord creates the 'Object.create and 'return' process when creating a prototype
 
 // //inheritiance- adviced not to use this pattern
 
@@ -123,19 +78,49 @@
 
 // man("nick").drinking();
 
-function Profile(gender) {
-  this.gender = gender;
+// function Profile(gender) {
+//   this.gender = gender;
+// }
+
+// Profile.prototype.name = function() {
+//   console.log(`i am a ${this.gender}`);
+// };
+
+// Profile.prototype.sleep = function() {
+//   console.log(`i dont sleep`);
+// };
+
+// const gend = new Profile("male");
+
+// let friends = [];
+// const friendswithout = new Array();
+
+Animal.prototype.eat = function(amount) {
+  console.log(`${this.name} is eating.`);
+  this.energy += amount;
+};
+Animal.prototype.sleep = function(length) {
+  console.log(`${this.name} is sleeping.`);
+  this.energy += length;
+};
+Animal.prototype.play = function(length) {
+  console.log(`${this.name} is playing.`);
+  this.energy -= length;
+};
+
+function Animal(name, energy) {
+  this.name = name;
+  this.energy = energy;
 }
 
-Profile.prototype.name = function() {
-  console.log(`i am a ${this.gender}`);
-};
+const leo = new Animal("Leo", 7);
+const snoop = new Animal("Snoop", 10);
 
-Profile.prototype.sleep = function() {
-  console.log(`i dont sleep`);
-};
-
-const gend = new Profile("male");
-
-let friends = [];
-const friendswithout = new Array();
+for (let key in snoop) {
+  console.log(`Key: ${key}. Value: ${snoop[key]}`);
+}
+for (let key in leo) {
+  if (leo.hasOwnProperty(key)) {
+    console.log(`Key: ${key}. Value: ${leo[key]}`);
+  }
+}
